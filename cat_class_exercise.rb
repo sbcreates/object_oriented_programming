@@ -8,9 +8,9 @@ class Cat
 
   def eats_at
     if @meal_time <= 11
-      puts "#{ @meal_time }AM"
+      "#{ @meal_time }AM"
     else
-      puts "#{ @meal_time }PM"
+      "#{ @meal_time }PM"
     end
   end
 
@@ -21,5 +21,8 @@ class Cat
 end
 
 
-charlie = Cat.new("Charlie", "raw chicken", "7")
-zoe = Cat.new("Zoe", "canned pate", "12")
+charlie = Cat.new("Charlie", "raw chicken", 7)
+zoe = Cat.new("Zoe", "canned pate", 12)
+
+puts charlie.meow
+puts zoe.meow
