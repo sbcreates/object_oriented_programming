@@ -8,29 +8,30 @@ class Player
 
   def level_up
     @lives += 1
-    "Congrats! You've just earned a life. You now have #{@lives} lives"
+    "Congrats! You've just earned a life. Your life is at #{@lives}"
   end
 
   def collect_treasure
       @gold_coins += 1
-      if @gold_coins % 10 == 0
+    if @gold_coins % 10 == 0
       level_up
-      "Awesome! You just earned a bonus life. You now have #{@gold_coins} gold and #{@lives} lives"
+      "Awesome! You just earned a bonus life. Your gold is at #{@gold_coins} and life is at #{@lives}"
     else
-      "You have #{@gold_coins} gold"
+      "Your gold is at #{@gold_coins}"
     end
   end
 
   def do_battle(damage)
+    @health_points -= damage
     if @health_points < 1
-      @lives -= 1 && @health_points = 10
-      "You've lost a life. You now have #{@lives} lives and your health is #{@health_points}"
+      @lives -= 1
+      @health_points = 10
+      "You've lost a life. Your life is at #{@lives} and health is at #{@health_points}"
     elsif @lives == 0
       restart
       "You're all out of lives. Time to restart. Resetting lives to #{@lives}, gold to #{@gold_coins}, and health to #{@health_points}."
     else
-      @health_points -= damage
-      "You've lost some health. Your health is #{@health_points}"
+      "Your health is at #{@health_points}"
     end
   end
 
@@ -45,3 +46,6 @@ player_one = Player.new
 
 puts player_one.level_up
 puts player_one.collect_treasure
+13.times do
+  puts player_one.do_battle(5)
+end
